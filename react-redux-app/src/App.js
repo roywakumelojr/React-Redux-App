@@ -1,23 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import JokeList from './components/JokeList';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Programming Jokes</h1>
+        <h2>Warning! none programmers may ! understand some || any of the presented jokes</h2>
+        <JokeList />
       </header>
     </div>
   );
