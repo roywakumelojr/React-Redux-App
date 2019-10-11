@@ -1,12 +1,12 @@
 import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE } from '../actions';
 
 const initialState = {
-  jokeList: [],
+  data: [],
   isFetching: false,
   error: ''
 };
 
-const reducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case START_FETCHING:
       return {
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         error: '',
-        jokeList: action.payload
+        data: action.payload
       };
     case FETCH_FAILURE:
       return {
@@ -32,4 +32,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default rootReducer;

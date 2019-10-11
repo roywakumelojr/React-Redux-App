@@ -1,18 +1,39 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { fetchJokes } from './actions';
+import './App.css'
 
-import JokeList from './components/JokeList';
+class App extends Component {
+  state = {
+    joke: ''
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Programming Jokes</h1>
-        <h2>Warning! none programmers may ! understand some || any of the presented jokes</h2>
-        <JokeList />
-      </header>
-    </div>
-  );
+  componentDidMount() {
+    this.props.fetchJokes();
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Programming Jokes</h1>
+          <h2>Warning! none programmers may ! understand some || any of the presented jokes</h2>
+          <div>
+            {this.props.jokes.map(joke => (
+              <p>{joke} </p>
+            ))}
+          </div>
+        </header>
+      </div>
+    );
+  }  
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    jokes: state.jokes,
+    isFetching: state.isFetching,
+  };
+};
+
+export default connect (mapStateToProps, { fetchJokes })(App);
